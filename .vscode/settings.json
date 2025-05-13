@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "stuies rogue lite.sln"
+    "dotnet.defaultSolution": "RogueLite.sln"
 }

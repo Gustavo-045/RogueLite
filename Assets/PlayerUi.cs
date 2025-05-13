@@ -9,25 +9,21 @@ public class PlayerUi : MonoBehaviour
     public Text foodText;
     public Text ammoText;
 
-    public PlayerResources playerResources;
+    public Text healthText;
 
-    void Start()
-    {
-        // Buscar al jugador en la escena
-        
-        
-    }
+    public PlayerResources playerResources;
 
     void Update()
     {
 
-                playerResources = GameObject.FindWithTag("Player").GetComponent<PlayerResources>();
+        playerResources = GameObject.FindWithTag("Player1").GetComponent<PlayerResources>();
 
         if (playerResources != null)
         {
             woodText.text = "Leña: " + playerResources.GetWood();
             foodText.text = "Alimento: " + playerResources.GetFood();
             ammoText.text = "Munición: " + playerResources.GetAmmo();
+            healthText.text = "Health: " + playerResources.GetHealth();
         }
     }
 }

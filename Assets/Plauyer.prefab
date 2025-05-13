@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 9215832841188949434}
   - component: {fileID: 5765191051978711277}
   - component: {fileID: 4429825354572469064}
-  - component: {fileID: 2646648643488402704}
   - component: {fileID: -4270397578646993652}
+  - component: {fileID: 1935461930130280494}
+  - component: {fileID: -3342474682657165171}
   m_Layer: 0
   m_Name: Plauyer
-  m_TagString: Player
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,8 +105,25 @@ MonoBehaviour:
   playerCamera: {fileID: 0}
   zoomedSize: 0.5
   defaultSize: 2
---- !u!60 &2646648643488402704
-PolygonCollider2D:
+  resources: {fileID: 0}
+--- !u!114 &-4270397578646993652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2691367192663929512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e17fa40e3eec5dc4787bb6ac83ecd746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wood: 100
+  food: 100
+  ammo: 100
+  health: 100
+--- !u!61 &1935461930130280494
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -133,10 +151,10 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.021601677, y: 0.0058918}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -146,61 +164,36 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.2890625, y: -0.04296875}
-      - {x: 0.28515625, y: -0.03125}
-      - {x: 0.18359375, y: -0.03515625}
-      - {x: 0.17578125, y: -0.05078125}
-      - {x: 0.0078125, y: -0.0546875}
-      - {x: 0.0078125, y: 0.0078125}
-      - {x: 0.21875, y: 0.0078125}
-      - {x: 0.2265625, y: 0.015625}
-      - {x: 0.23046875, y: 0.05078125}
-      - {x: 0.19140625, y: 0.09375}
-      - {x: 0.125, y: 0.1484375}
-      - {x: -0.020583153, y: 0.2836275}
-      - {x: -0.09375, y: 0.2578125}
-      - {x: -0.12719154, y: 0.23113441}
-      - {x: -0.1015625, y: 0.02734375}
-      - {x: -0.07421875, y: 0.0078125}
-      - {x: -0.0546875, y: -0.0546875}
-      - {x: -0.19140625, y: -0.05078125}
-      - {x: -0.19921875, y: -0.06640625}
-      - {x: -0.25, y: -0.0546875}
-      - {x: -0.31640625, y: -0.05078125}
-      - {x: -0.34765625, y: -0.06640625}
-      - {x: -0.3515625, y: -0.0703125}
-      - {x: -0.3515625, y: -0.11328125}
-      - {x: -0.34765625, y: -0.125}
-      - {x: -0.32421875, y: -0.14453125}
-      - {x: -0.26171875, y: -0.20703125}
-      - {x: -0.2421875, y: -0.234375}
-      - {x: -0.23671627, y: -0.34521294}
-      - {x: -0.040732384, y: -0.35209274}
-      - {x: 0.16327477, y: -0.34755516}
-      - {x: 0.1640625, y: -0.35847473}
-      - {x: 0.2843132, y: -0.13989449}
-      - {x: 0.29842854, y: -0.039895058}
-  m_UseDelaunayMesh: 0
---- !u!114 &-4270397578646993652
-MonoBehaviour:
+  serializedVersion: 2
+  m_Size: {x: 0.68972206, y: 0.55225945}
+  m_EdgeRadius: 0
+--- !u!50 &-3342474682657165171
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2691367192663929512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e17fa40e3eec5dc4787bb6ac83ecd746, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wood: 100
-  food: 100
-  ammo: 100
-  woodText: {fileID: 0}
-  foodText: {fileID: 0}
-  ammoText: {fileID: 0}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &9149643873164993622
 GameObject:
   m_ObjectHideFlags: 0

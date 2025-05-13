@@ -6,7 +6,7 @@ public class Nodo : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        player = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerController>();
     }
 
     void OnMouseDown()
@@ -29,32 +29,13 @@ public class Nodo : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Si el objeto que entra en el trigger es el jugador y tiene el tag "Player"
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player1"))
         {
-            // Si el nodo tiene el tag "Island" o "Enemy", acercamos la cámara
-            if (CompareTag("Island") || CompareTag("Enemy"))
-            {
-                Debug.Log("penesote");
-                player.ChangeCameraSize(true);  // Llamamos a ChangeCameraSize para acercar la cámara
-            }
 
             // Si el nodo tiene el tag "Fog" entra en contacto con el jugador, se destruye
             if (CompareTag("Fog"))
             {
                 Destroy(gameObject);  // Eliminar la niebla
-            }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        // Si el objeto que sale del trigger es el jugador y tiene el tag "Player"
-        if (other.CompareTag("Player"))
-        {
-            // Si el jugador sale de la casilla especial, restauramos la cámara
-            if (CompareTag("Island") || CompareTag("Enemy"))
-            {
-                player.ChangeCameraSize(false);  // Llamamos a ChangeCameraSize para restaurar el tamaño original de la cámara
             }
         }
     }

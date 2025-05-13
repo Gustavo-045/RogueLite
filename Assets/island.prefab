@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 9042978591414880536}
   - component: {fileID: 4153873132735870694}
   - component: {fileID: 4638891887365075551}
-  - component: {fileID: -2124660048957078163}
+  - component: {fileID: 6332513144264886879}
+  - component: {fileID: -6425532977381883812}
   m_Layer: 0
   m_Name: island
   m_TagString: Island
@@ -144,7 +145,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &-2124660048957078163
+--- !u!114 &6332513144264886879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8764109913515809520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a84bb1e867264d847b975537d0bfac70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minImpact: 5
+  maxImpact: 50
+  canBePositive: 1
+  tileSize: 0.5
+--- !u!50 &-6425532977381883812
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -159,7 +176,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

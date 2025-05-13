@@ -6,8 +6,9 @@ TagManager:
   tags:
   - MapGenerator
   - Fog
-  - Island
   - Enemy
+  - Player1
+  - Island
   layers:
   - Default
   - TransparentFX
