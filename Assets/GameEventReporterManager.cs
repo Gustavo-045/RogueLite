@@ -40,44 +40,59 @@ public class GameEventReporterManager : MonoBehaviour
     /// <summary>
     /// Inicializa todo el sistema de reportes
     /// </summary>
-    public void InitializeReportingSystem()
+public void InitializeReportingSystem()
+{
+    if (initialized) return;
+    
+    Debug.Log("🔄 Inicializando el sistema de reportes unificado...");
+    
+    // 1. Crear o encontrar el objeto principal del sistema de reportes
+    GameObject reporterObj;
+    if (reporterPrefab != null)
     {
-        if (initialized) return;
-        
-        Debug.Log("🔄 Inicializando el sistema de reportes unificado...");
-        
-        // 1. Crear o encontrar el objeto principal del sistema de reportes
-        GameObject reporterObj;
-        if (reporterPrefab != null)
-        {
-            reporterObj = Instantiate(reporterPrefab);
-        }
-        else
-        {
-            reporterObj = new GameObject("GameEventReporter");
-            reporterObj.AddComponent<GameEventReporter>();
-        }
-        reporterObj.name = "GameEventReporter";
-        DontDestroyOnLoad(reporterObj);
-        
-        // 2. Buscar o crear el canvas para la UI
-        Canvas uiCanvas = FindOrCreateCanvas();
-        
-        // 3. Crear el panel UI para los mensajes
-        GameObject reportPanel = CreateReportPanel(uiCanvas);
-        
-        // 4. Crear la plantilla de texto para los mensajes
-        TextMeshProUGUI textTemplate = CreateTextTemplate(reportPanel);
-        
-        // 5. Configurar el GameEventReporter
-        ConfigureReporter(reporterObj, textTemplate);
-        
-        // 6. Añadir los interceptores para capturar eventos del juego
-        AddInterceptors();
-        
-        initialized = true;
-        Debug.Log("✅ Sistema de reportes unificado inicializado correctamente");
+        reporterObj = Instantiate(reporterPrefab);
     }
+    else
+    {
+        reporterObj = new GameObject("GameEventReporter");
+        reporterObj.AddComponent<GameEventReporter>();
+    }
+    reporterObj.name = "GameEventReporter";
+    DontDestroyOnLoad(reporterObj);
+    
+    // 2. Buscar o crear el canvas para la UI
+    Canvas uiCanvas = FindOrCreateCanvas();
+    
+    // 3. Buscar el panel existente en el Canvas, si no existe, crearlo
+    GameObject reportPanel = FindOrCreateReportPanel(uiCanvas);
+    
+    // 4. Crear la plantilla de texto para los mensajes
+    TextMeshProUGUI textTemplate = CreateTextTemplate(reportPanel);
+    
+    // 5. Configurar el GameEventReporter
+    ConfigureReporter(reporterObj, textTemplate);
+    
+    // 6. Añadir los interceptores para capturar eventos del juego
+    AddInterceptors();
+    
+    initialized = true;
+    Debug.Log("✅ Sistema de reportes unificado inicializado correctamente");
+}
+
+private GameObject FindOrCreateReportPanel(Canvas canvas)
+{
+    // Intentar encontrar un panel existente con el nombre "EventReportPanel"
+    GameObject existingPanel = GameObject.Find("EventReportPanel");
+    if (existingPanel != null)
+    {
+        // Si ya existe, devolverlo
+        return existingPanel;
+    }
+    
+    // Si no existe, crear uno nuevo
+    return CreateReportPanel(canvas);
+}
+
     
     private Canvas FindOrCreateCanvas()
     {
