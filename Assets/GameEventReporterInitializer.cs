@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
@@ -111,4 +111,4 @@ public class GameEventReporterInitializer : MonoBehaviour
         // Asignar la referencia del texto al reporter
         reporter.eventText = tmpText;
     }
-}
+}*/

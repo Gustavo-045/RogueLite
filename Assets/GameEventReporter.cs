@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
+using Unity.UI;
 
 /// <summary>
 /// GameEventReporter - Sistema de reportes unificado para mostrar todos los eventos importantes del juego.
@@ -26,6 +28,10 @@ public class GameEventReporter : MonoBehaviour
     public Color resourceLossColor = new Color(0.8f, 0.2f, 0.2f);       // Rojo para pérdidas
     public Color diceRollColor = new Color(0.2f, 0.6f, 0.8f);           // Azul para tiradas de dados
     public Color riskEventColor = new Color(0.8f, 0.6f, 0.2f);          // Naranja para eventos de riesgo
+
+    public Image diceImage;  // Referencia al Image UI donde se mostrará el dado
+    public Sprite[] diceSprites;  // Array de sprites de los dados (debe tener 6 sprites, uno por cada cara)
+
 
     // Lista de mensajes activos
     private List<MessageData> activeMessages = new List<MessageData>();
@@ -114,11 +120,20 @@ public class GameEventReporter : MonoBehaviour
     /// </summary>
     /// <param name="sides">Número de caras del dado</param>
     /// <param name="result">Resultado de la tirada</param>
-    public void ReportDiceRoll(int sides, int result)
+ public void ReportDiceRoll(int sides, int result)
+{
+    // Asegúrate de que 'diceSprites' tenga los sprites correctos para cada cara del dado
+    if (result >= 1 && result <= 6 && diceSprites.Length == 6)
     {
-        string message = $"🎲 <color=#{ColorUtility.ToHtmlStringRGB(diceRollColor)}>Dado de {sides} caras: <b>{result}</b></color>";
-        ShowMessage(message);
+        // Cambia la imagen del dado al sprite correspondiente al número
+        diceImage.sprite = diceSprites[result - 1];  // Restamos 1 porque el array es 0-indexado
     }
+
+    // Opcional: Mostrar un mensaje con la tirada (si aún quieres mostrarlo)
+    //string message = $"🎲 <color=#{ColorUtility.ToHtmlStringRGB(diceRollColor)}>Dado de {sides} caras: <b>{result}</b></color>";
+    //ShowMessage(message);
+}
+
 
     /// <summary>
     /// Reporta un evento especial de riesgo
