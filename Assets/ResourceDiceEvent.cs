@@ -68,17 +68,24 @@ public class ResourceDiceEvent : RiskDiceEvent
         }
     }
 
-    private void ApplyResourceChange(PlayerResources resources, string resourceName, int amount, bool positive, System.Action<int> addMethod, System.Action<int> consumeMethod)
+private void ApplyResourceChange(PlayerResources resources, string resourceName, int amount, bool positive, System.Action<int> addMethod, System.Action<int> consumeMethod)
+{
+    if (positive)
     {
-        if (positive)
-        {
-            addMethod(amount);
-            Debug.Log($"🪵 Ganaste {amount} de {resourceName} ({playerChoice}).");
-        }
-        else
-        {
-            consumeMethod(amount);
-            Debug.Log($"💀 Perdiste {amount} de {resourceName} ({playerChoice}).");
-        }
+        addMethod(amount);
+        Debug.Log($"🪵 Ganaste {amount} de {resourceName}.");
+        
+        // Mostrar el mensaje en la UI
+        GameEventReporter.Instance.ReportResourceChange(resourceName, amount, resources.GetWood()); // Cambia GetWood() por el método adecuado para obtener el total
     }
+    else
+    {
+        consumeMethod(amount);
+        Debug.Log($"💀 Perdiste {amount} de {resourceName}.");
+        
+        // Mostrar el mensaje en la UI
+        GameEventReporter.Instance.ReportResourceChange(resourceName, -amount, resources.GetWood()); // Cambia GetWood() por el método adecuado para obtener el total
+    }
+}
+
 }
