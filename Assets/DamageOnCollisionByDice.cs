@@ -15,6 +15,7 @@ public class DamageOnTriggerByDice : RiskDiceEvent
 
     private Transform playerTransform;
     private bool hasTriggered = false;
+    
 
     void Start()
     {
@@ -37,7 +38,7 @@ public class DamageOnTriggerByDice : RiskDiceEvent
 
             AskPlayerChoice(choice =>
             {
-                int diceResult = DiceManager.Instance.RollDice(6);
+                int diceResult = DiceManager.Instance.RollDiceForDamage(6);
                 PlayerResources resources = playerTransform.GetComponent<PlayerResources>();
 
                 if (resources == null)

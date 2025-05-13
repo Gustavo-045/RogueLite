@@ -160,6 +160,15 @@ MonoBehaviour:
   minDamage: 5
   maxDamage: 30
   tileSize: 0.5
+  minLoot: 5
+  maxLoot: 20
+  diceImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!50 &7946621030480212670
 Rigidbody2D:
   serializedVersion: 4

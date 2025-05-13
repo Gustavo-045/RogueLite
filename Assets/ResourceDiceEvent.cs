@@ -11,6 +11,8 @@ public class ResourceDiceEvent : RiskDiceEvent
     private Transform playerTransform;
     private bool hasTriggered = false;
 
+    
+
     void Start()
     {
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player1");
@@ -34,7 +36,7 @@ public class ResourceDiceEvent : RiskDiceEvent
             {
                 if (choice == RiskChoice.Flee) return;
 
-                int diceResult = DiceManager.Instance.RollDice(6);
+                int diceResult = DiceManager.Instance.RollDiceForResource(6);
                 float impactRatio = (diceResult - 1) / 5f;
                 int impactAmount = Mathf.RoundToInt(Mathf.Lerp(minImpact, maxImpact, impactRatio));
                 impactAmount = AdjustBasedOnRisk(impactAmount);

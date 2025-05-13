@@ -161,6 +161,13 @@ MonoBehaviour:
   maxImpact: 50
   canBePositive: 1
   tileSize: 0.5
+  diceImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!50 &-6425532977381883812
 Rigidbody2D:
   serializedVersion: 4

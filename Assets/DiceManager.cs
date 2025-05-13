@@ -26,22 +26,33 @@ public class DiceManager : MonoBehaviour
     /// </summary>
     /// <param name="sides">Número de caras del dado (mínimo 2).</param>
     /// <returns>Resultado del dado (entre 1 y sides inclusive).</returns>
-    public int RollDice(int sides)
+public int RollDice(int sides)
+{
+    if (sides < 2)
     {
-        if (sides < 2)
-        {
-            Debug.LogWarning("DiceManager: El dado debe tener al menos 2 caras. Usando 2 por defecto.");
-            sides = 2;
-        }
-
-        int result = Random.Range(1, sides + 1);
-        Debug.Log($"🎲 DiceManager: Lanzado un dado de {sides} caras. Resultado: {result}");
-
-        // Mostrar en UI (si existe el manager)
-        if (DiceUIManager.Instance != null)
-            DiceUIManager.Instance.ShowDiceResult(sides, result);
-
-        return result;
-
+        Debug.LogWarning("DiceManager: El dado debe tener al menos 2 caras. Usando 2 por defecto.");
+        sides = 2;
     }
+
+    int result = Random.Range(1, sides + 1);
+    Debug.Log($"🎲 DiceManager: Lanzado un dado de {sides} caras. Resultado: {result}");
+    
+    return result;
+}
+
+
+    public int RollDiceForResource(int sides)
+{
+    int result = RollDice(sides);
+    DiceUIManager.Instance?.ShowResourceDice(sides, result);
+    return result;
+}
+
+public int RollDiceForDamage(int sides)
+{
+    int result = RollDice(sides);
+    DiceUIManager.Instance?.ShowDamageDice(sides, result);
+    return result;
+}
+
 }
